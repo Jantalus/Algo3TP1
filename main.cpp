@@ -11,7 +11,7 @@ using namespace std;
 
 bool poda_factibilidad = true; // define si la poda por factibilidad esta habilitada.
 bool poda_optimalidad = true; // define si la poda por optimalidad esta habilitada.
-int INFINITO = -1;
+int INFINITO = 0;
 
 int n, R;
 vector<int> S;
@@ -29,7 +29,7 @@ int FB(int i, int r, int k){
 int K = INFINITO;
 int BT(int i, int r, int k){
     if(i == n){
-        if(k < K){K = k;}
+        if(k > K) K = k;
         return (r < 0)? INFINITO:K;//devuelvo el K grande
     }
     if(poda_factibilidad && r < 0){
@@ -37,7 +37,6 @@ int BT(int i, int r, int k){
     }
 
     if(poda_optimalidad){
-
         if(k+(S.size() -1 -i) <= K){
             return INFINITO;
         }
