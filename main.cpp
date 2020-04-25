@@ -29,8 +29,9 @@ int FB(int i, int r, int k){
 int K = INFINITO;
 int BT(int i, int r, int k){
     if(i == n){
+        if(r < 0) return INFINITO;
         if(k > K) K = k;
-        return (r < 0)? INFINITO:K;//devuelvo el K grande
+        return K;//devuelvo el K grande
     }
     if(poda_factibilidad && r < 0){
         return INFINITO;
